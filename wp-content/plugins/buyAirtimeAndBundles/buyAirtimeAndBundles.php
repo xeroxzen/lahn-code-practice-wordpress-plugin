@@ -42,43 +42,34 @@ class BuyAirtimeAndBundles
     function uninstall()
     {
         // delete all the plugin data from the database
+        flush_rewrite_rules();
     }
 
     static function custom_airtime_bundle_purchase()
     {
         // create a custom post type for the plugin
-        // register register_purchase_type()
+        register custom_airtime_bundle_purchase();
 
-        // register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
-        // register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
+        register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
+        register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
     }
 
     public function add_popup()
     {
 ?>
         <!-- Add a nice looking card for airtime and bundle details -->
-        <div class="card">
+        <div class="card align-center">
             <div class="card-body">
                 <h5 class="card-title">Airtime and Bundles</h5>
-                <p class="card-text">
-                <ul>
-                    <li>Airtime: <span class="airtime-amount">$10</span></li>
-                    <li>Bundle: <span class="bundle-amount">$20</span></li>
-                </ul>
-                </p>
-                
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button onclick="openPopup()" type="button" class="btn btn-primary" data-toggle="modal">
                     Buy Airtime and Bundles
                 </button>
 
                 <script>
                     // When the user clicks on <button>, open the popup
                     function openPopup() {
-                        window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZQZQZQZQZQZQZ", "popupWindow", "width=600,height=600,scrollbars=yes");
+                        window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600,scrollbars=yes");
                     }
-
-                    // popop window after page load
-                    window.onload = openPopup;
 
                 </script>
             </div>
