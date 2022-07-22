@@ -48,10 +48,10 @@ class BuyAirtimeAndBundles
     static function custom_airtime_bundle_purchase()
     {
         // create a custom post type for the plugin
-        register custom_airtime_bundle_purchase();
+        // register custom_airtime_bundle_purchase();
 
-        register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
-        register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
+        // register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
+        // register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
     }
 
     public function add_popup()
@@ -60,17 +60,15 @@ class BuyAirtimeAndBundles
         <!-- Add a nice looking card for airtime and bundle details -->
         <div class="card align-center">
             <div class="card-body">
-                <h5 class="card-title">Airtime and Bundles</h5>
-                <button onclick="openPopup()" type="button" class="btn btn-primary" data-toggle="modal">
-                    Buy Airtime and Bundles
+                <h5 class="card-title">Buy Airtime and Bundles</h5>
+                <button onclick="openPopup()" type="button" class="btn btn-primary">
+                    Click here to buy
                 </button>
 
                 <script>
-                    // When the user clicks on <button>, open the popup
                     function openPopup() {
-                        window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600,scrollbars=yes");
+                        window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
                     }
-
                 </script>
             </div>
         </div>
