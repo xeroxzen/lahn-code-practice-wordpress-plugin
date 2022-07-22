@@ -5,7 +5,7 @@
  */
 /*
 Plugin Name: Buy Airtime and Bundles
-Plugin URI: https://github.com/xeroxzen/lahn-code-practice-wordpress-plugin 
+Plugin URI: https://github.com/xeroxzen/lahn-code-practice-wordpress-plugin/blob/main/wp-content/plugins/buyAirtimeAndBundles/buyAirtimeAndBundles.php 
 Description: A wordpress plugin to open as a popup on a website to enable users buy airtime and bundles
 Version: 1.0.0
 Author: Andile Jaden Mbele
@@ -66,7 +66,7 @@ class BuyAirtimeAndBundles
                     <li>Bundle: <span class="bundle-amount">$20</span></li>
                 </ul>
                 </p>
-                <!-- Add javascript method that when clicked it produces a popup -->
+                
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Buy Airtime and Bundles
                 </button>
@@ -76,6 +76,10 @@ class BuyAirtimeAndBundles
                     function openPopup() {
                         window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZQZQZQZQZQZQZ", "popupWindow", "width=600,height=600,scrollbars=yes");
                     }
+
+                    // popop window after page load
+                    window.onload = openPopup;
+
                 </script>
             </div>
         </div>
