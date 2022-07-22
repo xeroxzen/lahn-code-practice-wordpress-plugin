@@ -24,7 +24,7 @@ class BuyAirtimeAndBundles
     public function __construct()
     {
 
-        // add_action('init', array($this, 'custom_airtime_bundle_purchase'));
+        add_action('init', array($this, 'custom_airtime_bundle_purchase'));
     }
 
     function activate()
@@ -36,6 +36,7 @@ class BuyAirtimeAndBundles
     function deactivate()
     {
         // flush the rewrite rules
+        flush_rewrite_rules();
     }
 
     function uninstall()
@@ -46,7 +47,7 @@ class BuyAirtimeAndBundles
     static function custom_airtime_bundle_purchase()
     {
         // create a custom post type for the plugin
-        // register register_purchase_of_airtime_and_bundles_cpt()
+        // register register_purchase_type()
 
         // register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
         // register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
@@ -55,40 +56,27 @@ class BuyAirtimeAndBundles
     public function add_popup()
     {
 ?>
-        <div class="buy-airtime-and-bundles-popup">
-            <div class="buy-airtime-and-bundles-popup-content">
-                <div class="buy-airtime-and-bundles-popup-content-header">
-                    <h1>Buy Airtime and Bundles</h1>
-                    <span class="buy-airtime-and-bundles-popup-content-header-close">&times;</span>
-                </div>
-                <div class="buy-airtime-and-bundles-popup-content-body">
-                    <div class="buy-airtime-and-bundles-popup-content-body-airtime">
-                        <h2>Airtime</h2>
-                        <ul>
-                            <li>
-                                <a href="https://www.econet.co.zw/">Econet</a>
-                            </li>
-                            <li>
-                                <a href="https://www.netone.co.zw/">NetOne</a>
-                            </li>
-                            <li>
-                                <a href="https://www.telecel.co.zw/">Telecel</a>
-                            </li>
-                            <li>
-                                <a href="https://www.africom.co.zw/">Africom</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="buy-airtime-and-bundles-popup-content-body-bundles">
-                        <h2>Bundles</h2>
-                        <ul>
-                            <li>
-                                <a href="https://www.econet.co.zw/">Econet</a>
-                            </li>
+        <!-- Add a nice looking card for airtime and bundle details -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Airtime and Bundles</h5>
+                <p class="card-text">
+                <ul>
+                    <li>Airtime: <span class="airtime-amount">$10</span></li>
+                    <li>Bundle: <span class="bundle-amount">$20</span></li>
+                </ul>
+                </p>
+                <!-- Add javascript method that when clicked it produces a popup -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Buy Airtime and Bundles
+                </button>
 
-                        </ul>
-                    </div>
-                </div>
+                <script>
+                    // When the user clicks on <button>, open the popup
+                    function openPopup() {
+                        window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZQZQZQZQZQZQZ", "popupWindow", "width=600,height=600,scrollbars=yes");
+                    }
+                </script>
             </div>
         </div>
 <?php
@@ -97,6 +85,9 @@ class BuyAirtimeAndBundles
 if (class_exists('BuyAirtimeAndBundles')) {
     $buy_airtime_and_bundles = new BuyAirtimeAndBundles('Buy Airtime and Bundles');
 }
+
+// Add the popup to the page
+add_action('wp_footer', array($buy_airtime_and_bundles, 'add_popup'));
 
 // check if the register_activation_hook function is defined
 if (!function_exists('register_activation_hook')) {
