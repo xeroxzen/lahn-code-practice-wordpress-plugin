@@ -24,20 +24,18 @@ class BuyAirtimeAndBundles
     public function __construct()
     {
 
-        add_action('init', array($this, 'custom_airtime_bundle_purchase'));
+        // add_action('init', array($this, 'custom_airtime_bundle_purchase'));
     }
 
     function activate()
     {
         // generate a CPT for the plugin
         $this->custom_airtime_bundle_purchase();
-        flush_rewrite_rules();
     }
 
     function deactivate()
     {
         // flush the rewrite rules
-        flush_rewrite_rules();
     }
 
     function uninstall()
@@ -50,8 +48,8 @@ class BuyAirtimeAndBundles
         // create a custom post type for the plugin
         // register register_purchase_of_airtime_and_bundles_cpt()
 
-        register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
-        register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
+        // register_purchase_type('airtime', ['public' => true, 'label' => 'Airtime']);
+        // register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
     }
 
     public function add_popup()
