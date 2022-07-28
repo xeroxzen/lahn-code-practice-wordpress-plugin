@@ -12,7 +12,7 @@ body {
 h1 {
   font-family: "Playfair Display", serif;
   font-size: 59px;
-  color: white;
+  color: #0a0a0a;
   font-weight: 600;
   padding-bottom: 20px;
 }
@@ -22,7 +22,8 @@ p {
 }
 
 p,
-input, label {
+input,
+label {
   font-family: "Poppins", sans-serif;
 }
 
@@ -43,7 +44,7 @@ form {
 input,
 label {
   display: block;
-  margin: 0 auto;
+  margin: 0px auto;
   width: 100%;
   color: #828282;
 }
@@ -51,7 +52,7 @@ label {
 input {
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #828282;
+  border: 2px solid #159bda;
 }
 
 input[type="submit"] {

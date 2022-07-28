@@ -8,6 +8,12 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -17,70 +23,108 @@
       <p>Get yourself some data</p>
       <form action="buyAirtimeAndBundles.php" method="POST">
         <!-- Number to be recharged -->
-        <p>
-          <label for="phone">Enter phone number you want to recharge</label>
-
-          <input
-            type="tel"
-            name="receiving_phone"
-            id="receiving_phone"
-            placeholder="0778613888"
-          />
-        </p>
-
-        <!-- Amount to be recharged -->
-        <p>
-          <label for="email">Enter the amount in ZWL</label>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Enter phone number to be recharged.</label
+          >
           <input
             type="number"
-            name="amount_zwl"
-            id="amount_zwl"
-            placeholder="1200"
-          />
-        </p>
-
-        <!-- Payment method selection-->
-        <p>
-          <label for="payment_option">Select payment option</label>
-          <input
-            type="radio"
-            id="payment_option"
-            name="ecocash"
-            value="Ecocash/NetOne"
-          />
-          <input
-            type="radio"
-            id="payment_option"
-            name="mastercard"
-            value="Visa/MasterCard"
-          />
-        </p>
-
-        <!-- Paying Account-->
-        <p>
-          <label for="paying_account">Paying account</label>
-          <input
-            type="tel"
-            name="paying_phone"
-            id="paying_phone"
+            class="form-control"
+            id="exampleInputNumber1"
+            aria-describedby="numberHelp"
             placeholder="0716189728"
           />
-        </p>
+        </div>
+        <!-- Amount of airtime -->
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Enter amount of airtime.</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputNumber1"
+            aria-describedby="numberHelp"
+            placeholder="84000"
+          />
+        </div>
+        <!-- Payment Method -->
+        <div class="mb-3">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Payment Method of choice
+          </label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              EcoCash/OneMoney
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Visa/MasterCard
+            </label>
+          </div>
+        </div>
 
+        <!-- Paying Account -->
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Enter paying account</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="0778613888"
+          />
+        </div>
         <!-- Confirm transaction -->
-        <label for="confirm_details">Confirm Purchase Details</label>
-        <p>
-          <input type="radio" id="yes" name="confirm_purchase" value="Yes" />
-          <label for="yes">Yes</label>
-          <input type="radio" id="no" name="confirm_purchase" value="No" />
-          <label for="no">No</label>
-        </p>
-
+        <div class="mb-3">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Confirm transaction
+          </label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Yes
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+            />
+            <label class="form-check-label" for="flexRadioDefault2"> No </label>
+          </div>
+        </div>
         <!-- Submit transaction -->
-        <p>
-          <input type="submit" name="Buy" />
-        </p>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
