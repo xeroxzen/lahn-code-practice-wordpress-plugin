@@ -20,33 +20,65 @@
         <p>
           <label for="phone">Enter phone number you want to recharge</label>
 
-          <input type="tel" name="receiving_phone" id="receiving_phone" />
+          <input
+            type="tel"
+            name="receiving_phone"
+            id="receiving_phone"
+            placeholder="0778613888"
+          />
         </p>
+
+        <!-- Amount to be recharged -->
         <p>
-          <!-- Amount to be recharged -->
           <label for="email">Enter the amount in ZWL</label>
-          <input type="number" name="amount_zwl" id="amount_zwl" />
+          <input
+            type="number"
+            name="amount_zwl"
+            id="amount_zwl"
+            placeholder="1200"
+          />
         </p>
+
+        <!-- Payment method selection-->
         <p>
-          <!-- Payment method selection-->
           <label for="payment_option">Select payment option</label>
-          <input type="radio" name="Ecocash/NetOne" id="payment_option" />
-          <input type="radio" name="Visa/MasterCard" id="payment_option" />
+          <input
+            type="radio"
+            id="payment_option"
+            name="ecocash"
+            value="Ecocash/NetOne"
+          />
+          <input
+            type="radio"
+            id="payment_option"
+            name="mastercard"
+            value="Visa/MasterCard"
+          />
         </p>
+
+        <!-- Paying Account-->
         <p>
-          <!-- EcoCash/OneMoney number that will pay -->
-          <label for="name">Select payment option</label>
-          <input type="tel" name="receiving_phone" id="receiving_phone" />
+          <label for="paying_account">Paying account</label>
+          <input
+            type="tel"
+            name="paying_phone"
+            id="paying_phone"
+            placeholder="0716189728"
+          />
         </p>
+
+        <!-- Confirm transaction -->
+        <label for="confirm_details">Confirm Purchase Details</label>
         <p>
-          <!-- Confirm transaction -->
-          <label for="name">Confirm Details</label>
-          <input type="button" name="Confirm" />
-          <input type="button" name="Cancel" />
+          <input type="radio" id="yes" name="confirm_purchase" value="Yes" />
+          <label for="yes">Yes</label>
+          <input type="radio" id="no" name="confirm_purchase" value="No" />
+          <label for="no">No</label>
         </p>
+
+        <!-- Submit transaction -->
         <p>
-          <!-- Submit transaction -->
-          <input type="submit" name="Submit" />
+          <input type="submit" name="Buy" />
         </p>
       </form>
     </div>
