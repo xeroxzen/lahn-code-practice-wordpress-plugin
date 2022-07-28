@@ -54,44 +54,9 @@ class BuyAirtimeAndBundles
         // register_purchase_type('bundle', ['public' => true, 'label' => 'Bundles']);
     }
 
-    function airtimeUIform()
-    {
-        // create a form for users to input details to purchase airtime
-?>
-        <div class="container">
-            <h1>Purchase Airtime</h1>
-            <form action="">
-                <!-- Number to be recharged -->
-                <label for="phone">Enter phone number you want to recharge</label>
-                <input type="tel" name="receiving_phone" id="receiving_phone">
-                
-                <!-- Amount to be recharged -->
-                <label for="email">Enter the amount in ZWL</label>
-                <input type="number" name="amount_zwl" id="amount_zwl">
-                
-                <!-- Payment method selection-->
-                <label for="payment_option">Select payment option</label>
-                <input type="radio" name="Ecocash/NetOne" id="payment_option">
-                <input type="radio" name="Visa/MasterCard" id="payment_option">
-                
-                <!-- EcoCash/OneMoney number that will pay -->
-                <label for="name">Select payment option</label>
-                <input type="tel" name="receiving_phone" id="receiving_phone">
-
-                <!-- Confirm transaction -->
-                <label for="name">Confirm Details</label>
-                <input type="button" name="Confirm">
-                <input type="button" name="Cancel">
-            </form>
-        </div>
-
-    <?php
-
-    }
-
     public function add_popup()
     {
-    ?>
+?>
         <!-- Add a nice looking card for airtime and bundle details -->
         <div class="card align-center">
             <div class="card-body">
@@ -102,7 +67,9 @@ class BuyAirtimeAndBundles
 
                 <script>
                     function openPopup() {
-                        window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
+                        // window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
+                        // open the index.html file that's in the local directory in a new window
+                        window.open("<?php echo plugin_dir_url(__FILE__) . 'index.html'; ?>", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
                     }
                 </script>
             </div>

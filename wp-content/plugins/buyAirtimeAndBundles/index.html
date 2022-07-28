@@ -1,66 +1,54 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buy Airtime and Bundles</title>
     <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap"
       rel="stylesheet"
-      href="<?php echo plugins_url('css/style.css', __FILE__); ?>"
     />
-    <link
-      rel="stylesheet"
-      href="<?php echo plugins_url('css/bootstrap.min.css', __FILE__); ?>"
-    />
-    <link
-      rel="stylesheet"
-      href="<?php echo plugins_url('css/bootstrap-theme.min.css', __FILE__); ?>"
-    />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="page-header">
-            <h1>Buy Airtime and Bundles</h1>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Buy Airtime and Bundles</h3>
-            </div>
-            <form action="">
-              <!-- Number to be recharged -->
-              <label for="phone">Enter phone number you want to recharge</label>
-              <input type="tel" name="receiving_phone" id="receiving_phone" />
+      <h3>Buy airtime and bundles</h3>
+      <p>Get yourself some data</p>
+      <form action="buyAirtimeAndBundles.php" method="POST">
+        <!-- Number to be recharged -->
+        <p>
+          <label for="phone">Enter phone number you want to recharge</label>
 
-              <!-- Amount to be recharged -->
-              <label for="email">Enter the amount in ZWL</label>
-              <input type="number" name="amount_zwl" id="amount_zwl" />
-
-              <!-- Payment method selection-->
-              <label for="payment_option">Select payment option</label>
-              <input type="radio" name="Ecocash/NetOne" id="payment_option" />
-              <input type="radio" name="Visa/MasterCard" id="payment_option" />
-
-              <!-- EcoCash/OneMoney number that will pay -->
-              <label for="name">Select payment option</label>
-              <input type="tel" name="receiving_phone" id="receiving_phone" />
-
-              <!-- Confirm transaction -->
-              <label for="name">Confirm Details</label>
-              <input type="button" name="Confirm" />
-              <input type="button" name="Cancel" />
-
-              <!-- Submit transaction -->
-              <input type="submit" name="Submit" />
-            </form>
-          </div>
-        </div>
-      </div>
+          <input type="tel" name="receiving_phone" id="receiving_phone" />
+        </p>
+        <p>
+          <!-- Amount to be recharged -->
+          <label for="email">Enter the amount in ZWL</label>
+          <input type="number" name="amount_zwl" id="amount_zwl" />
+        </p>
+        <p>
+          <!-- Payment method selection-->
+          <label for="payment_option">Select payment option</label>
+          <input type="radio" name="Ecocash/NetOne" id="payment_option" />
+          <input type="radio" name="Visa/MasterCard" id="payment_option" />
+        </p>
+        <p>
+          <!-- EcoCash/OneMoney number that will pay -->
+          <label for="name">Select payment option</label>
+          <input type="tel" name="receiving_phone" id="receiving_phone" />
+        </p>
+        <p>
+          <!-- Confirm transaction -->
+          <label for="name">Confirm Details</label>
+          <input type="button" name="Confirm" />
+          <input type="button" name="Cancel" />
+        </p>
+        <p>
+          <!-- Submit transaction -->
+          <input type="submit" name="Submit" />
+        </p>
+      </form>
     </div>
   </body>
 </html>
