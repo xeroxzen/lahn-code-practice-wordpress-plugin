@@ -83,6 +83,32 @@ class BuyAirtimeAndBundles
                         // window.open("https://lahhn.com/recharge", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
                         // open the index.html file that's in the local directory in a new window
                         window.open("<?php echo plugin_dir_url(__FILE__) . 'index.html'; ?>", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
+
+                        // write jquery to close the popup window when the user clicks the close button
+                        $(document).ready(function() {
+                            $('#close').click(function() {
+                                window.close();
+                            });
+                        });
+
+                        // write jquery to communicate with an api to get the airtime and bundle details
+                        $(document).ready(function() {
+                            $('#buy').click(function() {
+                                var airtime = $('#airtime').val();
+                                var bundle = $('#bundle').val();
+                                $.ajax({
+                                    url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/buy_airtime'; ?>',
+                                    type: 'POST',
+                                    data: {
+                                        airtime: airtime,
+                                        bundle: bundle
+                                    },
+                                    success: function(data) {
+                                        console.log(data);
+                                    }
+                                });
+                            });
+                        });
                     }
                 </script>
             </div>
