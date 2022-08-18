@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,                initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buy Airtime and Bundles</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -73,10 +73,10 @@ class BuyAirtimeAndBundles
         <div class="card align-center">
             <div class="card-body">
                 <h5 class="card-title">Buy Airtime and Bundles</h5>
-                <button onclick="openPopup()" type="button" class="btn btn-primary">
-                    Click here to buy
+                <button id="buy_bundles" onclick="openPopup()" type="button" class="btn btn-primary">
+                    Buy Bundles
                 </button>
-                <button type="button" class="btn btn-info" onclick="openPopup()">Buy Airtime</button>
+                <button id="airtime" type="button" class="btn btn-info" onclick="buyAirtime()">Buy Airtime</button>
 
                 <script>
                     function openPopup() {
@@ -95,19 +95,78 @@ class BuyAirtimeAndBundles
                         $(document).ready(function() {
                             $('#buy').click(function() {
                                 var airtime = $('#airtime').val();
-                                var bundle = $('#bundle').val();
+                                // var bundle = $('#bundle').val();
                                 $.ajax({
-                                    url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/buy_airtime'; ?>',
+                                    url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
                                     type: 'POST',
                                     data: {
-                                        airtime: airtime,
-                                        bundle: bundle
+                                        airtime: airtime
                                     },
                                     success: function(data) {
                                         console.log(data);
                                     }
                                 });
                             });
+                        });
+                    }
+
+                    function buyAirtime() {
+                        window.open("<?php echo plugin_dir_url(__FILE__) . 'index.html'; ?>", "popupWindow", "width=600,height=600, scrollbars=yes, resizable=yes");
+
+                        $(document).ready(function() {
+                            $('#close').click(function() {
+                                window.close();
+                            });
+                        });
+
+                        var airtime = $('#airtime').val();
+                        var receiving_account = $('#customer_number').val();
+                        var payment_method = $('#mobile').val();
+                        var paying_account = $('#payment_number').val();
+                        var payment_amount = $('#amount').val();
+                        var payment_reference = $('#payment_reference').val();
+                        var payment_description = $('#payment_description').val();
+                        var payment_currency = $('#payment_currency').val();
+
+                        // check if confirm transaction is clicked to yes
+                        $(document).ready(function() {
+                            $('#confirm_transaction').click(function() {
+                                var confirm_transaction = $('#confirm_transaction').val();
+                                if (confirm_transaction == 'yes') {
+                                    $.ajax({
+                                        url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
+                                        type: 'POST',
+                                        data: {
+                                            order_type: "airtime",
+                                            customer_number: receiving_account,
+                                            payment_method: payment_method,
+                                            payment_number: paying_account,
+                                            payment_amount: amount,
+                                            productCoe: "",
+                                            customer_email: ""
+
+                                        },
+                                        success: function(data) {
+                                            console.log(data);
+                                        }
+                                    });
+                                }
+                            });
+                        });
+
+                    }
+
+                    function buyBundle() {
+                        var bundle = $('#bundle').val();
+                        $.ajax({
+                            url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
+                            type: 'POST',
+                            data: {
+                                bundle: bundle
+                            },
+                            success: function(data) {
+                                console.log(data);
+                            }
                         });
                     }
                 </script>
