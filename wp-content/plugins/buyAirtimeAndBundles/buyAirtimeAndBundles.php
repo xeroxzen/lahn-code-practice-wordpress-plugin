@@ -148,7 +148,13 @@ class BuyAirtimeAndBundles
                                         },
                                         success: function(data) {
                                             console.log(data);
-                                        }
+                                        },
+                                        // test if the data is sent to the api
+                                        error: function(data) {
+                                            console.log(data);
+                                        },
+
+    
                                     });
                                 }
                             });
