@@ -119,7 +119,7 @@ class BuyAirtimeAndBundles
                             });
                         });
 
-                        var airtime = $('#airtime').val();
+                        // var airtime = $('#airtime').val();
                         var receiving_account = $('#customer_number').val();
                         var payment_method = $('#mobile').val();
                         var paying_account = $('#payment_number').val();
@@ -128,38 +128,39 @@ class BuyAirtimeAndBundles
                         var payment_description = $('#payment_description').val();
                         var payment_currency = $('#payment_currency').val();
 
-                        // check if confirm transaction is clicked to yes
-                        $(document).ready(function() {
-                            $('#confirm_transaction').click(function() {
-                                var confirm_transaction = $('#confirm_transaction').val();
-                                if (confirm_transaction == 'yes') {
-                                    $.ajax({
-                                        url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
-                                        type: 'POST',
-                                        data: {
-                                            order_type: "airtime",
-                                            customer_number: receiving_account,
-                                            payment_method: payment_method,
-                                            payment_number: paying_account,
-                                            payment_amount: amount,
-                                            productCoe: "",
-                                            customer_email: ""
+                        // check if all fields are filled in and confirm transaction is clicked yes
+                        if (receiving_account == '' || payment_method == '' || paying_account == '' || payment_amount == '' || payment_reference == '' || payment_description == '' || payment_currency == '') {
+                            alert('Please fill in all fields');
+                        } else {
+                            $(document).ready(function() {
+                                $('#buy').click(function() {
+                                    $('#confirm_transaction').click(function() {
+                                        var confirm_transaction = $('#confirm_transaction').val();
+                                        if (confirm_transaction == 'yes') {
+                                            $.ajax({
+                                                url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/buy_airtime'; ?>',
+                                                type: 'POST',
+                                                data: {
+                                                    airtime: "airtime",
+                                                    receiving_account: receiving_account,
+                                                    payment_method: payment_method,
+                                                    paying_account: paying_account,
+                                                    payment_amount: payment_amount,
+                                                    payment_reference: payment_reference,
+                                                    payment_description: payment_description,
+                                                    payment_currency: payment_currency
+                                                },
+                                                success: function(data) {
+                                                    console.log(data);
+                                                }
 
-                                        },
-                                        success: function(data) {
-                                            console.log(data);
-                                        },
-                                        // test if the data is sent to the api
-                                        error: function(data) {
-                                            console.log(data);
-                                        },
-
-    
+                                            });
+                                        }
                                     });
-                                }
+                                })
                             });
-                        });
 
+                        }
                     }
 
                     function buyBundle() {
