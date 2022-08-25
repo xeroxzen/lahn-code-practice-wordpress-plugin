@@ -97,7 +97,7 @@ class BuyAirtimeAndBundles
                                 var airtime = $('#airtime').val();
                                 // var bundle = $('#bundle').val();
                                 $.ajax({
-                                    url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
+                                    url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/buy_airtime'; ?>',
                                     type: 'POST',
                                     data: {
                                         airtime: airtime
@@ -166,7 +166,7 @@ class BuyAirtimeAndBundles
                     function buyBundle() {
                         var bundle = $('#bundle').val();
                         $.ajax({
-                            url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/orders'; ?>',
+                            url: '<?php echo plugin_dir_url(__FILE__) . 'https://europe-west2-rechargeweb-v1.cloudfunctions.net/buy_airtime'; ?>',
                             type: 'POST',
                             data: {
                                 bundle: bundle

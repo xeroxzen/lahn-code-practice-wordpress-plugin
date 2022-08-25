@@ -21,18 +21,17 @@
     <div class="container-default">
       <h3>Buy airtime and bundles</h3>
       <p>Get yourself some data</p>
-      <form action="buyAirtimeAndBundles.php" method="POST">
+      <form action="buyAirtimeAndBundles.php" method="POST" id="form">
         <!-- Number to be recharged -->
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
             >Enter phone number to be recharged.</label
           >
           <input
-            type="number"
+            type="tel"
             class="form-control"
             id="customer_number"
             aria-describedby="numberHelp"
-            placeholder="0789493787"
           />
         </div>
         <!-- Amount of airtime -->
@@ -45,7 +44,6 @@
             class="form-control"
             id="amount"
             aria-describedby="numberHelp"
-            placeholder="400"
           />
         </div>
         <!-- Payment Method -->
@@ -82,12 +80,7 @@
           <label for="exampleFormControlInput1" class="form-label"
             >Enter paying account</label
           >
-          <input
-            type="text"
-            class="form-control"
-            id="payment_number"
-            placeholder="0785816703"
-          />
+          <input type="tel" class="form-control" id="payment_number" />
         </div>
         <!-- Confirm transaction -->
         <div class="mb-3">
@@ -122,5 +115,36 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function onSubmit() {
+        const form = document.getElementById("form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData();
+          // if there are missing fields, return an error
+          if (formData.errors) {
+            const errors = document.getElementsByClassName("errors");
+            errors.forEach((err) => {
+              if (err.errors.length > 0) {
+                errors.forEach((error) => {
+                  console.error(error.message);
+                });
+              }
+            });
+          } else {
+            errors.forEach((err) => {
+              console.error(err.message);
+            });
+          }
+        });
+      }
+
+      window.onload = function () {
+        onSubmit();
+      };
+
+      // consume the api here to purchase airtime
+      window.addEventListener("load", onSubmit, false);
+    </script>
   </body>
 </html>
